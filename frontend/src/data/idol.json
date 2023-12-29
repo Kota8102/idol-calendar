@@ -1,0 +1,82 @@
+[
+	{
+		"id": 1,
+		"name": "fishbowl",
+		"color": "accent-blue-600",
+		"colorcode": "#2563eb",
+		"url": "https://fishbowl.jp/",
+		"twitter": "https://twitter.com/fishbowl2021"
+	},
+	{
+		"id": 2,
+		"name": "INUWASI",
+		"color": "accent-gray-800",
+		"colorcode": "#1f2937",
+		"url": "https://inuwasi.jp/",
+		"twitter": "https://twitter.com/INUWASI_O"
+	},
+	{
+		"id": 3,
+		"name": "kolokol",
+		"color": "accent-amber-600",
+		"colorcode": "#d97706",
+		"url": "https://kolokol-official.com/",
+		"twitter": "https://twitter.com/klkl_official/"
+	},
+	{
+		"id": 4,
+		"name": "Mirror,Mirror.",
+		"color": "accent-lime-600",
+		"colorcode": "#4d7c0f",
+		"url": "https://www.mirror--mirror.com/",
+		"twitter": "https://twitter.com/MirrorMirror_V"
+	},
+	{
+		"id": 5,
+		"name": "Ringwanderung",
+		"color": "accent-neutral-700",
+		"colorcode": "#404040",
+		"url": "https://ringwanderung-official.com/",
+		"twitter": "https://twitter.com/RWR__OFFICIAL"
+	},
+	{
+		"id": 6,
+		"name": "THE ORCHESTRA TOKYO",
+		"color": "accent-teal-600",
+		"colorcode": "#0d9488",
+		"url": "https://t.co/Dq0i4F1wdy",
+		"twitter": "https://twitter.com/OrchestraTokyo"
+	},
+	{
+		"id": 7,
+		"name": "tipToe.",
+		"color": "accent-fuchsia-500",
+		"colorcode": "#d946ef",
+		"url": "https://tiptoe-official.com/",
+		"twitter": "https://twitter.com/tiptoe_official"
+	},
+	{
+		"id": 8,
+		"name": "yosugala",
+		"color": "accent-purple-500",
+		"colorcode": "#a855f7",
+		"url": "https://yosugala2022.ryzm.jp/",
+		"twitter": "https://twitter.com/yosugala_info"
+	},
+	{
+		"id": 9,
+		"name": "さとりモンスター",
+		"color": "accent-violet-700",
+		"colorcode": "#6d28d9",
+		"twitter": "https://twitter.com/info_satomon",
+		"url": "https://ntkcreation.com/artist/satomon"
+	},
+	{
+		"id": 10,
+		"name": "タイトル未定",
+		"color": "accent-cyan-600",
+		"colorcode": "#0891b2",
+		"url": "https://miteititle.com/",
+		"twitter": "https://twitter.com/MiteiTitle/"
+	}
+]

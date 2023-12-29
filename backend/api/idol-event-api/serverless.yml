@@ -1,0 +1,46 @@
+service: idol-event-api
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: ap-northeast-1
+  role: arn:aws:iam::523736472015:role/service-role/api-get-event-role-xdyhloek
+
+functions:
+  getEvents:
+    handler: handler.get_events
+    events:
+      - http:
+          path: idolEvents
+          method: get
+          # cors: true
+          request:
+            parameters:
+              querystrings:
+                month: true
+
+plugins:
+  - serverless-better-credentials
+  # - serverless-python-requirements
+
+# custom:
+#   pythonRequirements:
+#     dockerizePip: true
+#     layer: true
+
+package:
+  patterns:
+    - "!.vscode/**"
+    - "!.git/**"
+    - "!.gitignore"
+    - "!.serverless"
+    - "!.serverless/**"
+    - "!README.md"
+    - "!package*.json"
+    - "!requirements.txt"
+    - "!node_modules/**"
+    - "!__pycache__"
+    - "!yarn.lock"
+    - "!conf/**"

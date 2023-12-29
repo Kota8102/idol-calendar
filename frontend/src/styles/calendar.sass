@@ -1,0 +1,94 @@
+.calendar
+  @media (max-width: 768px) 
+    .fc .fc-toolbar.fc-header-toolbar
+      margin-left: 0.1rem
+      margin-right: 0.1rem
+
+    .fc-header-toolbar
+      // flex-flow: column
+      // align-items: start !important
+    .fc .fc-toolbar-title
+      font-size: 1.25rem
+      // font-weight: 400
+    .fc .fc-today-button
+      font-size: 1rem
+      padding: 0
+
+    .fc .fc-button-primary:not(:disabled).fc-button-active, 
+    .fc .fc-button-primary:not(:disabled):active
+      padding: 0.25rem
+
+    .fc .fc-button-primary
+      padding: 0.25rem
+
+    .fc-direction-ltr .fc-toolbar>*>:not(:first-child)
+      margin-left: 0.25rem
+
+  .fc .fc-toolbar.fc-header-toolbar
+    margin-bottom: 1rem
+
+  .fc .fc-today-button
+    // font-size: 1rem
+    border: none
+    outline: none
+
+  .fc .fc-today-button:disabled
+    font-size: 1rem
+    color: #000000
+    background-color: #ffffff
+    opacity: 1
+
+  .fc .fc-button-primary
+    font-size: 1rem
+    background-color: #ffffff00
+    color: #4b5563
+    border: none
+    // outline: none
+
+  .fc .fc-button-primary:focus
+    box-shadow: none
+
+  .fc .fc-button-primary:not(:disabled).fc-button-active, 
+  .fc .fc-button-primary:not(:disabled):active
+    background-color: #e5e7eb
+    color: #000000
+
+  .fc .fc-button-primary:not(:disabled).fc-button-active:focus, 
+  .fc .fc-button-primary:not(:disabled):active:focus
+    box-shadow: none
+
+  .tracking-wide
+    color: #ffffff
+    letter-spacing: 0.005em
+
+  .fc .fc-list-event.fc-event-forced-url:hover
+    color: #000000
+    opacity: 1 !important
+
+  .fc-event-title 
+    font-size: 14px
+
+body::-webkit-scrollbar
+  width: 0 !important
+
+@keyframes scaleUpFadeIn
+  0%
+    opacity: 0
+    transform: scale(0.9)
+
+  100%
+    opacity: 1
+    transform: scale(1)
+
+.modal
+  animation: fadeIn 0.2s ease-in-out
+
+.fc-popover
+  width: 210px
+
+.fc .fc-more-popover .fc-popover-body
+  min-width: 200px !important
+  padding: 5px
+
+:root
+  --fc-list-event-hover-bg-color: #36465c
