@@ -1,0 +1,116 @@
+openapi: "3.0.0"
+
+info: #APIのメタデータ
+  title: "Iodl calendar"
+  version: "1.0.0" #APIドキュメントのバージョン(必須)
+
+servers:
+  - url: http://api.example.com/v1
+    description: Optional server description, e.g. Main (production) server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+
+paths:
+  /events:
+    get:
+      tags:
+        - default
+      summary: イベント情報取得API
+      description: イベント情報を取得します
+      parameters:
+        - name: since
+          description: 年月の始まり
+          schema:
+            type: integer
+          in: query
+          required: false
+        - name: until
+          description: 年月の終わり
+          schema:
+            type: integer
+          in: query
+          required: false
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    eventid:
+                      type: string
+                    title:
+                      type: string
+                    date:
+                      type: string
+                    idolid:
+                      type: string
+                example:
+                  - eventid: afegseg1
+                    title: yosugala単独
+                    date: 2023-05-21
+                    idolid: 001
+                  - eventid: abcdefg2
+                    title: exampleイベント
+                    date: 2023-06-15
+                    idolid: 002
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: "string"
+                    example: "NOT_FOUND"
+                  message:
+                    type: "string"
+                    example: "NOT_FOUND"
+  /events/{eventid}:
+    get:
+      tags:
+        - default
+      description: イベントの詳細情報を取得するAPI
+      summary: イベント詳細情報API
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eventid:
+                    type: string
+                  date:
+                    type: string
+                  idolid:
+                    type: string
+                  detail:
+                    type: string
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: "string"
+                    example: "NOT_FOUND"
+                  message:
+                    type: "string"
+                    example: "NOT_FOUND"
+  /chat:
+    get:
+      tags:
+        - 未完成
+      description: 生成AI機能を利用するためのAPI
+      summary: 生成AI API
+      responses:
+        200:
+          description: Success

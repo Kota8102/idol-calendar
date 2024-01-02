@@ -23,7 +23,9 @@
         "yzhang.markdown-all-in-one",
         "shd101wyy.markdown-preview-enhanced",
         "DavidAnson.vscode-markdownlint",
-        "ICS.japanese-proofreading"
+        "ICS.japanese-proofreading",
+        "42Crunch.vscode-openapi",
+        "njpwerner.autodocstring"
       ]
     }
   }
