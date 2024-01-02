@@ -2,25 +2,31 @@ service: idol-event-api
 
 frameworkVersion: "3"
 
+useDotenv: true
+
 provider:
   name: aws
-  runtime: python3.9
+  runtime: python3.11
   region: ap-northeast-1
-  memorySize: 1024
-  role: arn:aws:iam::523736472015:role/service-role/api-get-event-role-xdyhloek
+  stackTags:
+    Name: ${self:custom.var.myname}
+    Environment: ${self:custom.var.environment}
+    SystemName: ${self:custom.var.mysystemname}
+    ApplicationRole: api
 
 functions:
   getEvents:
-    handler: handler.get_events
+    name: ${self:custom.var.myname}
+    handler: handler.lambda_handler
+    role: arn:aws:iam::523736472015:role/service-role/api-get-event-role-xdyhloek
+    timeout: 120
+    memorySize: 1024
+    layers:
+      - Ref: PythonRequirementsLambdaLayer
     events:
       - http:
-          path: idolEvents
+          path: events
           method: get
-          # cors: true
-          request:
-            parameters:
-              querystrings:
-                month: true
 
 plugins:
   - serverless-python-requirements
@@ -30,6 +36,10 @@ custom:
   pythonRequirements:
     dockerizePip: true
     layer: true
+  var:
+    myname: ${self:custom.var.mysystemname}-${self:custom.var.environment}-${self:service}-api
+    environment: ${opt:stage, 'dev'}
+    mysystemname: ${file(./conf/settings.yml):SystemName}
 
 package:
   patterns:
