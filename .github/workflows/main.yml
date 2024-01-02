@@ -2,6 +2,10 @@ name: example
 
 on:
   push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'
 
 jobs:
   s3ls:
