@@ -6,20 +6,32 @@ useDotenv: true
 
 provider:
   name: aws
-  runtime: python3.11
+  runtime: python3.10
   region: ap-northeast-1
   stackTags:
     Name: ${self:custom.var.myname}
     Environment: ${self:custom.var.environment}
     SystemName: ${self:custom.var.mysystemname}
     ApplicationRole: api
+  apiGateway:
+    apiKeys:
+      - normal:
+        - normalKey
+    usagePlan:
+      - normal:
+          quota:
+            limit: 1000
+            period: MONTH
+          throttle:
+            burstLimit: 100
+            rateLimit: 10
 
 functions:
   getEvents:
     name: ${self:custom.var.myname}
     handler: handler.lambda_handler
     role: arn:aws:iam::523736472015:role/service-role/api-get-event-role-xdyhloek
-    timeout: 120
+    timeout: 30
     memorySize: 1024
     layers:
       - Ref: PythonRequirementsLambdaLayer
@@ -30,11 +42,10 @@ functions:
 
 plugins:
   - serverless-python-requirements
-  - serverless-better-credentials
 
 custom:
   pythonRequirements:
-    dockerizePip: true
+    slim: true 
     layer: true
   var:
     myname: ${self:custom.var.mysystemname}-${self:custom.var.environment}-${self:service}-api

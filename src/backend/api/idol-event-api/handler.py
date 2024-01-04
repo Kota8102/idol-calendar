@@ -35,7 +35,7 @@ def get_evetns(since, until):
     # 取得したデータを返す
     items = response['Items']
 
-    result = json.dumps(items, ensure_ascii=False, indent=4),
+    result = json.dumps(items, ensure_ascii=False, indent=4)
 
     return result
 
@@ -43,8 +43,9 @@ def get_evetns(since, until):
 def lambda_handler(event, context):
 
     # クエリパラメータの取得
-    since = event['queryStringParameters'].get('since', None)
-    until = event['queryStringParameters'].get('until', None)
+    query_params = event.get('queryStringParameters') or {}
+    since = query_params.get('since', None)
+    until = query_params.get('until', None)
 
     try:
         result = get_evetns(since, until)
