@@ -100,7 +100,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/idol-event-api/dev/1704392095605-2024-01-04T18:14:55.605Z/idol-event-api.zip"
+          "S3Key": "serverless/idol-event-api/dev/1704459377986-2024-01-05T12:56:17.986Z/idol-event-api.zip"
         },
         "Handler": "handler.lambda_handler",
         "Runtime": "python3.10",
@@ -118,14 +118,14 @@
         "GetEventsLogGroup"
       ]
     },
-    "GetEventsLambdaVersionb2Ak9QNhivgyKRxvvpj6UC9W5hSq4luSqVkX49iPeQ": {
+    "GetEventsLambdaVersionxY1jOJnmVtKebYa81ygpUinef0qIxkJgig21OVFpNiE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetEventsLambdaFunction"
         },
-        "CodeSha256": "Ez5Vf6F8xiNm/2gtpXe/Z7hB15Swk8Esd2cyBaiSN/A="
+        "CodeSha256": "5fYcBiESiCVvLI+UfNVKx1cqHbJg964HoLAL54STeFs="
       }
     },
     "ApiGatewayRestApi": {
@@ -201,7 +201,7 @@
         "GetEventsLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1704392094001": {
+    "ApiGatewayDeployment1704459375328": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -227,11 +227,11 @@
           }
         ]
       },
-      "DependsOn": "ApiGatewayDeployment1704392094001"
+      "DependsOn": "ApiGatewayDeployment1704459375328"
     },
     "ApiGatewayUsagePlanNormal": {
       "Type": "AWS::ApiGateway::UsagePlan",
-      "DependsOn": "ApiGatewayDeployment1704392094001",
+      "DependsOn": "ApiGatewayDeployment1704459375328",
       "Properties": {
         "ApiStages": [
           {
@@ -338,7 +338,7 @@
     "GetEventsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetEventsLambdaVersionb2Ak9QNhivgyKRxvvpj6UC9W5hSq4luSqVkX49iPeQ"
+        "Ref": "GetEventsLambdaVersionxY1jOJnmVtKebYa81ygpUinef0qIxkJgig21OVFpNiE"
       },
       "Export": {
         "Name": "sls-idol-event-api-dev-GetEventsLambdaFunctionQualifiedArn"

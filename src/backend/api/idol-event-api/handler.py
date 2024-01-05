@@ -54,7 +54,8 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'body': result,
             'headers': {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin": "*"
             }
         }
     except Exception as e:
@@ -62,7 +63,8 @@ def lambda_handler(event, context):
             'statusCode': 404,
             'body': json.dumps({'message': str(e)}),
             'headers': {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin": "*"
             }
         }
 
