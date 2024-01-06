@@ -6,7 +6,8 @@ import Loader from '../component/atom/loader'
 
 const Home: React.FC = (): JSX.Element => {
 	return (
-		<Layout isIdolslist={true}>
+		// <Layout isIdolslist={true}>
+		<Layout>
 			<div>
 				<Loader />
 				<Calendar />

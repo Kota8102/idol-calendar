@@ -20,7 +20,7 @@ const RouteManager: React.FC = () => {
 					<Route path="/privacypolicy" element={<PrivacyPage />} />
 					{/* <Route path="/contact" element={<ContactPage />} /> */}
 					<Route
-						path="/events/:eventId"
+						path="/event/:eventId"
 						element={<EventDetail />}
 					/>{' '}
 					{/* イベント詳細ページのルート */}

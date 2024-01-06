@@ -6,24 +6,26 @@ import listPlugin from '@fullcalendar/list'
 
 // import CheckboxContext from '../../contexts/CheckboxContext'
 // import LoadingContext from '../../contexts/LoadingContext'
-import ModalContext from '../../contexts/ModalContext'
+// import ModalContext from '../../contexts/ModalContext'
 // import CalendarContext from '../../contexts/Calendar'
 
 import '../../styles/calendar.sass'
-import Modal from '../molecule/modal'
+// import Modal from '../molecule/modal'
 import { groupColors } from '../atom/idoldata'
 
 import useApi from '../../hook/useApi'
+import { useNavigate } from 'react-router-dom'
 
 const Calendar: React.FC = (): JSX.Element => {
+	const navigate = useNavigate()
 	// const [events, setEvents] = useState([])
 
 	// const { groupidList } = useContext(CheckboxContext)
 
 	// const { setIsLoading } = useContext(LoadingContext)
 
-	const { showModal, setShowModal, setmodalEvent, setModalPosition } =
-		useContext(ModalContext)
+	// const { showModal, setShowModal, setmodalEvent, setModalPosition } =
+	// 	useContext(ModalContext)
 
 	// const { setView } = useContext(CalendarContext)
 
@@ -41,7 +43,7 @@ const Calendar: React.FC = (): JSX.Element => {
 		const end = dateInfo.endStr // YYYY-MM-DD形式の日付
 
 		setApiEndpoint(
-			`https://k91ii0yh3d.execute-api.ap-northeast-1.amazonaws.com/dev/events?since=${start}&until=${end}`
+			`https://meegvuv7f0.execute-api.ap-northeast-1.amazonaws.com/dev/events?since=${start}&until=${end}`
 		)
 	}
 	// const filterevents = (events ?? []).filter((event: Event) => {
@@ -54,7 +56,7 @@ const Calendar: React.FC = (): JSX.Element => {
 				plugins={[dayGridPlugin, listPlugin]}
 				initialView="dayGridMonth"
 				locales={[jaLocale]}
-				dayMaxEvents={3}
+				dayMaxEvents={2}
 				locale="ja"
 				contentHeight={'auto'}
 				headerToolbar={{
@@ -100,53 +102,11 @@ const Calendar: React.FC = (): JSX.Element => {
 				// eventのクリック時の動作
 				eventClick={(info) => {
 					const event = info.event
+					console.log(event.id)
 
-					let dateValue: Date | null = null
-					if (event.start) {
-						dateValue = new Date(event.start)
-					}
-					let formatdateValue = ''
-					if (dateValue) {
-						formatdateValue = dateValue.toLocaleDateString(
-							'ja-JP',
-							{
-								month: '2-digit',
-								day: '2-digit',
-								weekday: 'short',
-							}
-						)
-					}
-
-					// getBoundingClientRectを使ってクリックされたイベントの位置情報を取得する
-					const eventRect = info.el.getBoundingClientRect()
-					setShowModal(false)
-					setShowModal(true)
-
-					setmodalEvent({
-						title: event.title,
-						date: dateValue,
-						formatdate: formatdateValue,
-						description: event.extendedProps.description,
-						location: event.extendedProps.location,
-						idolname: event.extendedProps.idolname,
-						groupid: event.groupId,
-					})
-
-					setModalPosition({
-						width: eventRect.width,
-						height: eventRect.height,
-						top: eventRect.top,
-						left: eventRect.left,
-						right: eventRect.right,
-					})
+					navigate(`/event/${event.id}`)
 				}}
 			/>
-
-			{showModal && (
-				<div className="modal overlay show flex flex-col">
-					<Modal />
-				</div>
-			)}
 		</div>
 	)
 }
