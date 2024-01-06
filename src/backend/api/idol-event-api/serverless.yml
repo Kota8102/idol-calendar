@@ -40,6 +40,19 @@ functions:
           path: events
           method: get
 
+  getEventById:
+    name: ${self:custom.var.myname}-get-event-by-id
+    handler: get-event-detail.lambda_handler
+    role: arn:aws:iam::523736472015:role/service-role/api-get-event-role-xdyhloek
+    timeout: 30
+    memorySize: 1024
+    layers:
+      - Ref: PythonRequirementsLambdaLayer
+    events:
+      - http:
+          path: events/{eventid}
+          method: get
+
 plugins:
   - serverless-python-requirements
 
