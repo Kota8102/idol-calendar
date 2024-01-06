@@ -8,6 +8,13 @@
 		"ghcr.io/devcontainers/features/aws-cli:1": {},
 		"ghcr.io/devcontainers-contrib/features/node-asdf:0": {},
 		"ghcr.io/devcontainers-contrib/features/serverless:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"42Crunch.vscode-openapi"
+			]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
