@@ -1,59 +1,52 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import jaLocale from '@fullcalendar/core/locales/ja'
 import listPlugin from '@fullcalendar/list'
 
-import CheckboxContext from '../../contexts/CheckboxContext'
-import LoadingContext from '../../contexts/LoadingContext'
+// import CheckboxContext from '../../contexts/CheckboxContext'
+// import LoadingContext from '../../contexts/LoadingContext'
 import ModalContext from '../../contexts/ModalContext'
-import CalendarContext from '../../contexts/Calendar'
+// import CalendarContext from '../../contexts/Calendar'
 
 import '../../styles/calendar.sass'
 import Modal from '../molecule/modal'
 import { groupColors } from '../atom/idoldata'
 
+import useApi from '../../hook/useApi'
+
 const Calendar: React.FC = (): JSX.Element => {
-	const [events, setEvents] = useState([])
+	// const [events, setEvents] = useState([])
 
-	const { groupidList } = useContext(CheckboxContext)
+	// const { groupidList } = useContext(CheckboxContext)
 
-	const { setIsLoading } = useContext(LoadingContext)
+	// const { setIsLoading } = useContext(LoadingContext)
 
 	const { showModal, setShowModal, setmodalEvent, setModalPosition } =
 		useContext(ModalContext)
 
-	const { setView } = useContext(CalendarContext)
+	// const { setView } = useContext(CalendarContext)
 
-	useEffect(() => {
-		// APIからJSONデータを取得
-		const fetchEvents = async () => {
-			setIsLoading(true)
+	// イベント取得のためのステートとAPIエンドポイント
+	// APIエンドポイントのURLを管理
+	const [apiEndpoint, setApiEndpoint] = useState<string>('')
 
-			const res = await fetch(
-				'https://p1crz86hlk.execute-api.ap-northeast-1.amazonaws.com/production/events',
-				{
-					method: 'POST',
-					mode: 'cors',
-					headers: {
-						'Content-Type': 'application/json',
-						'x-api-key': `${process.env.REACT_APP_API_KEY}`,
-					},
-				}
-			)
+	// useApiフックを使用してイベントデータを取得
+	const { data: events } = useApi<Event[]>(apiEndpoint)
 
-			const data = await res.json()
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const handleDatesSet = (dateInfo: any) => {
+		// 新しい表示範囲に基づいてAPIエンドポイントURLを更新
+		const start = dateInfo.startStr // YYYY-MM-DD形式の日付
+		const end = dateInfo.endStr // YYYY-MM-DD形式の日付
 
-			// setEvents(data);
-			setEvents(JSON.parse(data.body))
-			setIsLoading(false)
-		}
-		fetchEvents()
-	}, [])
-
-	const filterevents = events.filter((info: { groupId: string }) => {
-		return groupidList.includes(info.groupId)
-	})
+		setApiEndpoint(
+			`https://k91ii0yh3d.execute-api.ap-northeast-1.amazonaws.com/dev/events?since=${start}&until=${end}`
+		)
+	}
+	// const filterevents = (events ?? []).filter((event: Event) => {
+	// 	return groupidList.includes(event.groupId)
+	// })
 
 	return (
 		<div className="calendar">
@@ -70,11 +63,13 @@ const Calendar: React.FC = (): JSX.Element => {
 					right: 'dayGridMonth listMonth',
 				}}
 				businessHours={{ daysOfWeek: [1, 2, 3, 4, 5] }}
-				events={filterevents}
-				// events = {events}
-				datesSet={(viewInfo) => {
-					setView(viewInfo.view.type)
-				}}
+				events={events ?? []}
+				datesSet={handleDatesSet}
+				// events={events ?? []}
+
+				// datesSet={(viewInfo) => {
+				// 	setView(viewInfo.view.type)
+				// }}
 				// eventのcssを調整
 				eventDidMount={(info) => {
 					const event = info.event
