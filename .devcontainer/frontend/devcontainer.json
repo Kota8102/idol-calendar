@@ -1,5 +1,5 @@
 {
-  "name": "Next.js 14",
+  "name": "React",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
 
@@ -10,7 +10,7 @@
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "cd my-next-app && yarn install",
+  // "postCreateCommand": "",
 
   "customizations": {
     "vscode": {
