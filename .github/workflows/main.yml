@@ -25,16 +25,19 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy
-        env:
-          AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+        # awsへのアクセス情報を設定
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ap-northeast-1
+
+      - name: Deploy to S3
         run: |
           aws s3 cp --recursive --region ap-northeast-1 build s3://${{ secrets.S3_BUCKET_NAME }}
 
       - name: Invalidate CloudFront
         uses: chetan/invalidate-cloudfront-action@v2
         env:
-          AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
           AWS_REGION: "ap-northeast-1"
           PATHS: "/index.html"
