@@ -1,6 +1,6 @@
 import idolData from '../../data/idol.json'
 
-export type Idol = {
+type Idol = {
 	id: number
 	name: string
 	color: string
@@ -9,14 +9,14 @@ export type Idol = {
 	twitter: string
 }
 
-export type IdolColorData = {
+type IdolColorData = {
 	id: number
 	name: string
 	color: string
 	colorcode: string
 }
 
-export type IdolSocialData = {
+type IdolSocialData = {
 	id: number
 	name: string
 	url: string

@@ -1,42 +1,54 @@
-import React, { useContext } from 'react'
-import { IconContext } from 'react-icons'
+import React from 'react'
 import {
-	MdSquare,
 	MdLocationOn,
 	MdGroup,
 	MdFormatAlignLeft,
+	MdCalendarMonth,
 } from 'react-icons/md'
 
-import ModalContext from '../../contexts/ModalContext'
-import ModalDetail from '../atom/modaldetail'
 import { groupColors } from '../atom/idoldata'
+import ModalDetail from '../atom/modaldetail'
+import Square from '../atom/square'
 
-const ModalList: React.FC = () => {
-	const { modalEvent } = useContext(ModalContext)
-	const groupid = modalEvent.groupid
+type EventProps = {
+	location: string
+	groupid: string
+	idolname: string
+	description: string
+	start: string
+	title: string
+}
+
+const ModalList: React.FC<EventProps> = ({
+	location,
+	groupid,
+	idolname,
+	description,
+	start,
+	title,
+}) => {
 	const color = groupColors[groupid]
 
 	return (
-		<div className="flex flex-col pl-6 pr-6 pb-2">
-			<div>
-				<div className="flex inline-flex items-start pt-1 pb-2">
-					<div className="pr-5 pt-2">
-						<IconContext.Provider value={{ color, size: '18' }}>
-							<MdSquare />
-						</IconContext.Provider>
-					</div>
-					<div className="whitespace-pre-wrap text-xl md:text-2xl ">
-						{modalEvent.title}
-					</div>
+		<div className="flex flex-col space-y-2 pl-6 pr-6 pb-3 pt-3">
+			<div className="flex inline-flex items-start pt-1 pb-2">
+				<div className="pr-5 pt-2">
+					<Square color={color} size="18" />
 				</div>
-				<div className="pl-10">{modalEvent.formatdate}</div>
+				<div className="whitespace-pre-wrap text-xl md:text-2xl ">
+					{title}
+				</div>
 			</div>
 
-			<ModalDetail text={modalEvent.idolname}>
+			<ModalDetail text={start}>
+				<MdCalendarMonth size={21} />
+			</ModalDetail>
+
+			<ModalDetail text={idolname}>
 				<MdGroup size={21} />
 			</ModalDetail>
 
-			{modalEvent.description && (
+			{description && (
 				<div className="flex inline-flex items-start pt-2 pb-2">
 					<div className="pr-5 pt-2">
 						<MdFormatAlignLeft size={18} />
@@ -44,14 +56,14 @@ const ModalList: React.FC = () => {
 					<div
 						className="whitespace-pre-wrap overflow-auto break-words"
 						dangerouslySetInnerHTML={{
-							__html: modalEvent.description,
+							__html: description,
 						}}
 					/>
 				</div>
 			)}
 
-			{modalEvent.location && (
-				<ModalDetail text={modalEvent.location}>
+			{location && (
+				<ModalDetail text={location}>
 					<MdLocationOn size={18} />
 				</ModalDetail>
 			)}

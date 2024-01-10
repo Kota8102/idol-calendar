@@ -1,12 +1,12 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Home from '../page/home'
+import NotFound from '../page/404'
 import AboutPage from '../page/about'
+import EventDetail from '../page/eventdetai'
+import Home from '../page/home'
 import Idols from '../page/idols'
 import PrivacyPage from '../page/privacy'
-import NotFound from '../page/404'
-import EventDetail from '../page/eventdetai'
 // import ContactPage from '../page/contact';
 
 const RouteManager: React.FC = () => {

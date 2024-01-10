@@ -6,10 +6,10 @@ import React, {
 	useLayoutEffect,
 } from 'react'
 
-import ModalList from './modallist'
-import ModalHeader from './modalheader'
-import ModalContext from '../../contexts/ModalContext'
 import CalendarContext from '../../contexts/Calendar'
+import ModalContext from '../../contexts/ModalContext'
+import ModalHeader from './modalheader'
+import ModalList from './modallist'
 
 const Modal: React.FC = () => {
 	const modalWidth = 448
@@ -169,7 +169,7 @@ const Modal: React.FC = () => {
 						: {}
 				}
 			>
-				<ModalList />
+				{/* <ModalList /> */}
 			</div>
 		</div>
 	)

@@ -1,7 +1,7 @@
 // sidebar.tsx
 import React from 'react'
-import IdolsList from '../molecule/idolslist'
 import { idolColorData } from '../atom/idoldata'
+import IdolsList from '../molecule/idolslist'
 
 type Props = {
 	isIdolslist?: boolean

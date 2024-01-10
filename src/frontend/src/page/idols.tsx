@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Layout from '../component/organisms/layout'
 import Table from '../component/atom/table'
+import Layout from '../component/organisms/layout'
 
 const Idols: React.FC = () => {
 	return (

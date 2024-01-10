@@ -1,6 +1,6 @@
 import React from 'react'
-import Layout from '../component/organisms/layout'
 import { Link } from 'react-router-dom'
+import Layout from '../component/organisms/layout'
 
 const NotFound: React.FC = () => {
 	return (

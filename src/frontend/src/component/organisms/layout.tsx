@@ -1,11 +1,10 @@
 import React, { ReactNode } from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 
-import Header from './header'
-import Footer from './footer'
-import Sidebar from './sidebar'
-
 import AppContext from '../../contexts/AppContext'
+import Header from './header'
+// import Footer from './footer'
+import Sidebar from './sidebar'
 
 type Props = {
 	children: ReactNode
@@ -25,7 +24,7 @@ const Layout = ({ children, isIdolslist }: Props) => {
 				</Helmet>
 				<div className="flex flex-col h-screen">
 					<Header />
-					<main className="flex-grow py-1 md:p-2">
+					<main className="flex-grow py-1 md:p-1">
 						<div className="flex flex-col md:flex-row">
 							<div className="basis-1/12 p-2 md:inline-block">
 								<Sidebar isIdolslist={isIdolslist} />
@@ -33,7 +32,7 @@ const Layout = ({ children, isIdolslist }: Props) => {
 							<div className="flex-auto md:p-1">{children}</div>
 						</div>
 					</main>
-					<Footer />
+					{/* <Footer /> */}
 				</div>
 			</HelmetProvider>
 		</AppContext>

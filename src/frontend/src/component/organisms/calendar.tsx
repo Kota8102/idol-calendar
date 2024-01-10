@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
 import jaLocale from '@fullcalendar/core/locales/ja'
+import dayGridPlugin from '@fullcalendar/daygrid'
 import listPlugin from '@fullcalendar/list'
+import FullCalendar from '@fullcalendar/react'
+import React, { useState } from 'react'
 
 // import CheckboxContext from '../../contexts/CheckboxContext'
 // import LoadingContext from '../../contexts/LoadingContext'
@@ -11,10 +11,10 @@ import listPlugin from '@fullcalendar/list'
 
 import '../../styles/calendar.sass'
 // import Modal from '../molecule/modal'
-import { groupColors } from '../atom/idoldata'
 
-import useApi from '../../hook/useApi'
 import { useNavigate } from 'react-router-dom'
+import useApi from '../../hook/useApi'
+import { groupColors } from '../atom/idoldata'
 
 const Calendar: React.FC = (): JSX.Element => {
 	const navigate = useNavigate()
