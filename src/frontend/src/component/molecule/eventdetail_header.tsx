@@ -2,7 +2,7 @@ import React from 'react'
 import { MdOutlineClose } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 
-import AddToGoogleCalendarButton from './AddToGoogleCalendarButton'
+import AddToGoogleCalendarButton from './googlecalendar_button'
 
 type EventDetailHeaderProps = {
 	location: string
