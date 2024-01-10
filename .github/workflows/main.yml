@@ -8,12 +8,16 @@ on:
       - "src/frontend/**"
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     defaults:
       run:
         working-directory: src/frontend
+
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Checkout
