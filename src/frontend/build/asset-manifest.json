@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7b1bf192.css",
-    "main.js": "/static/js/main.c5156fe6.js",
-    "static/js/787.d3befce1.chunk.js": "/static/js/787.d3befce1.chunk.js",
+    "main.css": "/static/css/main.efc95590.css",
+    "main.js": "/static/js/main.9d3b7e8f.js",
     "static/media/ibm-plex-sans-jp-all-400-normal.woff": "/static/media/ibm-plex-sans-jp-all-400-normal.b2dbe5d337c6d89597e8.woff",
     "static/media/ibm-plex-sans-jp-23-400-normal.woff2": "/static/media/ibm-plex-sans-jp-23-400-normal.cd46f69d9348da7d8bf4.woff2",
     "static/media/ibm-plex-sans-jp-34-400-normal.woff2": "/static/media/ibm-plex-sans-jp-34-400-normal.2503bfb2e7fb2ad39721.woff2",
@@ -125,12 +124,11 @@
     "static/media/ibm-plex-sans-jp-1-400-normal.woff2": "/static/media/ibm-plex-sans-jp-1-400-normal.eced55611185a8bcce27.woff2",
     "static/media/ibm-plex-sans-jp-2-400-normal.woff2": "/static/media/ibm-plex-sans-jp-2-400-normal.23731461eae3fcca3f36.woff2",
     "index.html": "/index.html",
-    "main.7b1bf192.css.map": "/static/css/main.7b1bf192.css.map",
-    "main.c5156fe6.js.map": "/static/js/main.c5156fe6.js.map",
-    "787.d3befce1.chunk.js.map": "/static/js/787.d3befce1.chunk.js.map"
+    "main.efc95590.css.map": "/static/css/main.efc95590.css.map",
+    "main.9d3b7e8f.js.map": "/static/js/main.9d3b7e8f.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b1bf192.css",
-    "static/js/main.c5156fe6.js"
+    "static/css/main.efc95590.css",
+    "static/js/main.9d3b7e8f.js"
   ]
 }

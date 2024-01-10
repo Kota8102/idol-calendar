@@ -3378,9 +3378,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001426:
-  version "1.0.30001445"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001445.tgz"
-  integrity sha512-8sdQIdMztYmzfTMO6KfLny878Ln9c2M0fc7EH60IjlP4Dc4PiCy7K2Vl3ITmWgOyPgVQKa5x+UP/KqFsxj4mBg==
+  version "1.0.30001576"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001576.tgz"
+  integrity sha512-ff5BdakGe2P3SQsMsiqmt1Lc8221NR1VzHj5jXN5vBny9A6fpze94HiVV/n7XRosOlsShJcvMv5mdnpjOGCEgg==
 
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
@@ -10857,10 +10857,10 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-web-vitals@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.npmjs.org/web-vitals/-/web-vitals-2.1.4.tgz"
-  integrity sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==
+web-vitals@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.npmjs.org/web-vitals/-/web-vitals-3.5.1.tgz"
+  integrity sha512-xQ9lvIpfLxUj0eSmT79ZjRoU5wIRfIr7pNukL7ZE4EcWZSmfZQqOlhuAGfkVa3EFmzPHZhWhXfm2i5ys+THVPg==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"
