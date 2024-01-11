@@ -11,12 +11,11 @@ type Props = {
 }
 
 const IdolsList: React.FC<{ idols: Props[] }> = ({ idols }) => {
-	console.log(idols)
 	return (
 		<div className="mt-1 flex flex-col md:mt-16">
-			<h2 className="ml-1 text-xl font-medium">Idol List</h2>
+			{/* <h2 className="ml-1 text-xl font-medium">Idol List</h2> */}
 
-			<div className="flex flex-wrap md:flex-col">
+			<div className="flex flex-col">
 				{idols.map((idol, index) => (
 					<Checkbox
 						key={index}
@@ -28,9 +27,9 @@ const IdolsList: React.FC<{ idols: Props[] }> = ({ idols }) => {
 					/>
 				))}
 			</div>
-			<div className="mt-3">
+			{/* <div className="mt-3">
 				<Toggle />
-			</div>
+			</div> */}
 		</div>
 	)
 }

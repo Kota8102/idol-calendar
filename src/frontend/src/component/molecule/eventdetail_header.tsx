@@ -28,7 +28,7 @@ const EventDetailHeader: React.FC<EventDetailHeaderProps> = ({
 		<div className="modal-header flex justify-end p-3 space-x-3">
 			<button
 				type="button"
-				className="w-10 h-10 p-2 bg-gray-200 rounded-md flex items-center justify-center"
+				className="w-10 h-10 p-2 rounded-md flex items-center justify-center"
 			>
 				<AddToGoogleCalendarButton
 					location={location}
@@ -41,7 +41,7 @@ const EventDetailHeader: React.FC<EventDetailHeaderProps> = ({
 
 			<button
 				type="button"
-				className="w-10 h-10 p-2 bg-gray-200 rounded-md flex items-center justify-center"
+				className="w-10 h-10 p-2 rounded-md flex items-center justify-center"
 				onClick={handleClick}
 			>
 				<MdOutlineClose size={24} />

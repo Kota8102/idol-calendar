@@ -1,6 +1,9 @@
 import React from 'react'
 import { MdOutlineClose } from 'react-icons/md'
-import MenuItem from '../atom/menuitem' // 新しいMenuItemコンポーネントをインポート
+
+import { idolColorData } from '../atom/idoldata'
+import MenuItem from '../atom/menuitem'
+import IdolsList from './idolslist'
 
 type MenuProps = {
 	isOpen: boolean
@@ -18,9 +21,9 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => (
 		<div
 			className={`fixed inset-y-0 right-0 w-9/12 max-w-sm bg-white transform ${
 				isOpen ? 'translate-x-0' : 'translate-x-full'
-			} transition-transform duration-300 ease-in-out z-50 shadow-md`}
+			} transition-transform duration-300 ease-in-out z-50 shadow-md p-4 text-gray-600`}
 		>
-			<div className="flex justify-end p-4">
+			<div className="flex justify-end p-3">
 				<MdOutlineClose
 					className="text-black cursor-pointer"
 					size={24}
@@ -36,12 +39,20 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => (
 					Sign Up
 				</button>
 			</div> */}
-			<ul className="divide-y divide-gray-300 p-3">
+			<ul className="divide-y divide-gray-300">
 				<MenuItem to="/" label="TOP" />
 				<MenuItem to="/about" label="ABOUT" />
 				<MenuItem to="/idols" label="IDOL LIST" />
 				<MenuItem to="" label="SETTINGS" />
 			</ul>
+			{/* アイドルの表示制御 */}
+
+			<div className="pt-4">
+				<div className="font-bold">表示アイドルの設定</div>
+				<div className="text-gray-800">
+					<IdolsList idols={idolColorData} />
+				</div>
+			</div>
 		</div>
 	</>
 )

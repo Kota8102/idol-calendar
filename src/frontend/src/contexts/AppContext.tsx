@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from 'react'
 
 import { numberOfIdols } from '../component/atom/idoldata'
+import useLocalStorage from '../hook/uselocalstorage'
 import CalendarContext from './Calendar'
 import CheckboxContext from './CheckboxContext'
 import LoadingContext from './LoadingContext'
@@ -15,13 +16,14 @@ const AppContext: React.FC<Props> = ({ children }) => {
 
 	const [isLoading, setIsLoading] = useState(false)
 
-	const [groupidList, setGroupidList] = useState<string[]>(
-		Array.from({ length: numberOfIdols }, (_, i) => i + 1).map((i) =>
-			i.toString()
-		)
-	)
-	const [checkList, setCheckList] = useState<boolean[]>(
+	// ローカルストレージに保存する状態を用意します
+	const [checkList, setCheckList] = useLocalStorage(
+		'checkList',
 		new Array(numberOfIdols).fill(true)
+	)
+	const [groupidList, setGroupidList] = useLocalStorage(
+		'groupidList',
+		Array.from({ length: numberOfIdols }, (_, i) => (i + 1).toString())
 	)
 
 	const [showModal, setShowModal] = useState(false)

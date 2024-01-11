@@ -1,5 +1,5 @@
 import React from 'react'
-import { MdLaunch } from 'react-icons/md'
+import { FaGoogle } from 'react-icons/fa'
 
 type CalendarEventProps = {
 	title: string
@@ -31,7 +31,7 @@ const AddToGoogleCalendarButton: React.FC<CalendarEventProps> = ({
 			rel="noopener noreferrer"
 			className="inline-block"
 		>
-			<MdLaunch size={21} className="w-21 h-21" />
+			<FaGoogle size={21} className="w-21 h-21" />
 		</a>
 	)
 }
