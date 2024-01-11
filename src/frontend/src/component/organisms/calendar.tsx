@@ -79,10 +79,9 @@ const Calendar: React.FC = (): JSX.Element => {
 
 					element.style.borderColor = 'transparent'
 					element.classList.add(
-						'text-xs',
-						'leading-5',
-						'tracking-wide',
-						'pl-1',
+						// 'leading-5',
+						// 'tracking-wide',
+						// 'pl-1',
 						'cursor-pointer' // hover時のカーソルの形をpointerに
 					)
 
