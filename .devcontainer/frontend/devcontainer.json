@@ -23,7 +23,9 @@
         "yzhang.markdown-all-in-one",
         "shd101wyy.markdown-preview-enhanced",
         "DavidAnson.vscode-markdownlint",
-        "ICS.japanese-proofreading"
+        "ICS.japanese-proofreading",
+        "syler.sass-indented",
+        "ritwickdey.live-sass"
       ],
       "settings": {
         "editor.formatOnSave": true
