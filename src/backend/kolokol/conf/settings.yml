@@ -1,0 +1,4 @@
+SystemName: idolcalendar
+lambdarole : arn:aws:iam::523736472015:role/idolcalendarLambdaS3Role
+S3BucketArn: "arn:aws:s3:::scraping-morimoto"
+DynamoDBArn: "arn:aws:dynamodb:ap-northeast-1:523736472015:table/schedule"

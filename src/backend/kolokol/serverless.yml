@@ -1,0 +1,123 @@
+service: backend-kolokol
+
+frameworkVersion: '3'
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: python3.10
+  region: ap-northeast-1
+
+plugins:
+  - serverless-step-functions
+  - serverless-python-requirements
+
+functions:
+  get_kolokol_events:
+    name : ${self:custom.var.mynamelambda1}
+    handler: get_events/main.handlers
+    role: CustomLambdaExecutionRole
+    timeout: 120
+    layers:
+      - Ref: PythonRequirementsLambdaLayer
+
+  push_kolokol_events:
+    name : ${self:custom.var.mynamelambda2}
+    handler: push_dynamo/main.handlers
+    role: CustomLambdaExecutionRole
+    timeout: 120
+
+stepFunctions:  
+  stateMachines:
+    myStateMachine:
+      name: ${self:custom.var.stepfunctionsanme}
+      definition:
+        StartAt: InvokeLambda1
+        States:
+          InvokeLambda1:
+            Type: Task
+            Resource:
+              Fn::GetAtt: [get_kolokol_events, Arn]
+            Next: InvokeLambda2
+          InvokeLambda2:
+            Type: Task
+            Resource:
+              Fn::GetAtt: [push_kolokol_events, Arn]
+            End: true
+      # EventBridge（CloudWatch Events）スケジュールの設定
+      events:
+        - schedule:
+            name: "DailyExecutionAtMidnightJST"
+            description: "Trigger Step Function at midnight JST every day"
+            enabled: true
+            rate: cron(0 15 * * ? *)
+
+resources:
+  Resources:
+    CustomLambdaExecutionRole:
+      Type: "AWS::IAM::Role"
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: "Allow"
+              Principal:
+                Service:
+                  - "lambda.amazonaws.com"
+              Action: "sts:AssumeRole"
+        Policies:
+          - PolicyName: "CustomLambdaPolicy"
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: "Allow"
+                  Action:
+                    - "logs:CreateLogGroup"
+                    - "logs:CreateLogStream"
+                    - "logs:PutLogEvents"
+                  Resource: "arn:aws:logs:*:*:*"
+                - Effect: "Allow"
+                  Action:
+                    - "s3:GetObject"
+                    - "s3:ListBucket"
+                  Resource:
+                    - ${self:custom.settings.S3BucketArn}
+                    - "${self:custom.settings.S3BucketArn}/*"
+                - Effect: "Allow"
+                  Action:
+                    - "dynamodb:BatchGetItem"
+                    - "dynamodb:BatchWriteItem"
+                    - "dynamodb:PutItem"
+                    - "dynamodb:DeleteItem"
+                    - "dynamodb:GetItem"
+                    - "dynamodb:Scan"
+                    - "dynamodb:Query"
+                    - "dynamodb:UpdateItem"
+                  Resource: ${self:custom.settings.DynamoDBArn}
+
+custom:
+  pythonRequirements:
+    layer: true
+
+  settings: ${file(./conf/settings.yml)}
+  var:
+    mynamelambda1: ${self:custom.settings.SystemName}-${self:custom.var.environment}-get_kolokol_events-lambda
+    mynamelambda2: ${self:custom.settings.SystemName}-${self:custom.var.environment}-push_kolokol_events-lambda
+    stepfunctionsanme: ${self:custom.settings.SystemName}-${self:custom.var.environment}-kolokol-stepfunctions
+    environment: ${opt:stage, 'dev'}
+
+package:
+  patterns:
+    - "!.vscode/**"
+    - "!.git/**"
+    - "!.gitignore"
+    - "!.serverless"
+    - "!.serverless/**"
+    - "!README.md"
+    - "!package*.json"
+    - "!requirements.txt"
+    - "!node_modules/**"
+    - "!__pycache__"
+    - "!yarn.lock"
+    - "!conf/**"
